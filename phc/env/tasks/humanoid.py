@@ -721,10 +721,10 @@ class Humanoid(BaseTask):
 
     def _load_amass_gender_betas(self):
         if self._has_mesh:
-            gender_betas_data = joblib.load("sample_data/amass_isaac_gender_betas.pkl")
+            gender_betas_data = joblib.load("/hdd/caizixuan/PHC/sample_data/amass_isaac_gender_betas.pkl")
             self._amass_gender_betas = np.array(list(gender_betas_data.values()))
         else:
-            gender_betas_data = joblib.load("sample_data/amass_isaac_gender_betas_unique.pkl")
+            gender_betas_data = joblib.load("/hdd/caizixuan/PHC/sample_data/amass_isaac_gender_betas_unique.pkl")
             self._amass_gender_betas = np.array(gender_betas_data)
             
     def _create_envs(self, num_envs, spacing, num_per_row):
@@ -761,10 +761,10 @@ class Humanoid(BaseTask):
                 "model": self.humanoid_type,
                 "sim": "isaacgym",
             }
-            if os.path.exists("data/smpl"):
+            if os.path.exists("/hdd/caizixuan/PHC/data/smpl/"):
                 robot = SMPL_Robot(
                     robot_cfg,
-                    data_dir="data/smpl",
+                    data_dir="/hdd/caizixuan/PHC/data/smpl/",
                 )
             else:
                 print("!!!!!!! SMPL files not found, loading pre-computed humanoid assets, only for demo purposes !!!!!!!")
